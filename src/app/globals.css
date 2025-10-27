@@ -24,3 +24,59 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Force black text in all form inputs */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  color: #000000 !important;
+}
+
+/* Force black text for input values */
+input,
+input:not([type]),
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="url"] {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Ensure placeholder text is also black */
+input::placeholder,
+textarea::placeholder {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+/* Fix for autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Force black text for all form elements */
+input,
+textarea,
+select {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Force black text for input values in all states */
+input:not([readonly]),
+input:not([disabled]),
+input:not([readonly]):focus,
+input:not([disabled]):focus {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}

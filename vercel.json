@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ],
+  "output": "static",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
+}
