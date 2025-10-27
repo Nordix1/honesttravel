@@ -3,13 +3,12 @@ import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import { companies, getCompanyBySlug } from '@/data/companies';
 
-// Function to generate URL-friendly slugs
-function generateSlug(name: string): string {
+// Function to generate URL-friendly slugs - must match the one in [name]/page.tsx
+export function generateSlug(name: string): string {
   return name
     .toLowerCase()
-    .replace(/&/g, 'and')  // Replace & with 'and'
-    .replace(/[^a-z0-9]+/g, '-')  // Replace non-alphanumeric with -
-    .replace(/^-+|-+$/g, '');     // Remove leading/trailing -
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }
 
 export default function CompaniesPage() {

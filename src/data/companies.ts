@@ -87,11 +87,17 @@ function normalizeSlug(slug: string): string {
 }
 
 export function getCompanyBySlug(slug: string): Company | undefined {
-  const normalizedSlug = normalizeSlug(slug);
+  console.log('getCompanyBySlug - Input slug:', slug);
   
-  return companies.find(company => {
+  const normalizedSlug = normalizeSlug(slug);
+  console.log('Normalized slug:', normalizedSlug);
+  
+  const foundCompany = companies.find(company => {
     // Try exact match first
-    if (company.name.toLowerCase() === normalizedSlug) return true;
+    if (company.name.toLowerCase() === normalizedSlug) {
+      console.log(`Exact match found for: ${company.name}`);
+      return true;
+    }
     
     // Try with generated slug
     const companySlug = company.name
@@ -99,6 +105,18 @@ export function getCompanyBySlug(slug: string): Company | undefined {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
       
-    return companySlug === normalizedSlug;
+    const isMatch = companySlug === normalizedSlug;
+    if (isMatch) {
+      console.log(`Slug match found for: ${company.name} (${companySlug})`);
+    }
+    
+    return isMatch;
   });
+  
+  if (!foundCompany) {
+    console.log('No company found for slug:', normalizedSlug);
+    console.log('Available companies:', companies.map(c => c.name).join(', '));
+  }
+  
+  return foundCompany;
 }
