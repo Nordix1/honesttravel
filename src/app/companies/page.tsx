@@ -3,13 +3,9 @@ import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import { companies, getCompanyBySlug } from '@/data/companies';
 
-// Function to generate URL-friendly slugs - must match the one in [name]/page.tsx
-export function generateSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
+// Move generateSlug to a separate utility file to avoid export issues
+import { generateSlug } from '@/lib/utils';
+
 
 export default function CompaniesPage() {
   return (

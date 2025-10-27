@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation';
 import { getCompanyBySlug, companies as allCompanies } from '@/data/companies';
 import CompanyPageClient from './company-page-client';
 
-// Import the shared generateSlug function
-import { generateSlug } from '../page';
+// Import the shared generateSlug utility function
+import { generateSlug } from '@/lib/utils';
 
 // This function tells Next.js which dynamic routes to pre-render
 export async function generateStaticParams() {

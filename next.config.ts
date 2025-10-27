@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,23 +14,22 @@ const nextConfig = {
     unoptimized: true,
   },
   
-  // Disable Turbopack
-  experimental: {
-    turbo: false
-  },
-  
   // Webpack configuration
   webpack: (config: any) => {
     // Simple alias resolution
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': require('path').resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'src'),
     };
     return config;
   },
   
+  // Explicitly use webpack and disable Turbopack
+  experimental: {
+    webpackBuildWorker: true,
+  },
   // Disable Turbopack
-  turbopack: undefined,
+  turbo: undefined,
 };
 
 module.exports = nextConfig;
